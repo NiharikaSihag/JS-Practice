@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox and Grid Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            margin-bottom: 50px;
+        }
+        
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+        
+        .demo-box {
+            padding: 20px;
+            border: 2px dashed #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Flexbox Styles */
+        .flex-container {
+            display: flex;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .flex-item {
+            background-color: #4682B4;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        /* Flex Direction */
+        .flex-direction-row {
+            flex-direction: row;
+        }
+        
+        .flex-direction-column {
+            flex-direction: column;
+        }
+        
+        /* Justify Content */
+        .justify-start {
+            justify-content: flex-start;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .justify-end {
+            justify-content: flex-end;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .justify-around {
+            justify-content: space-around;
+        }
+        
+        /* Align Items */
+        .align-container {
+            height: 200px;
+        }
+        
+        .align-start {
+            align-items: flex-start;
+        }
+        
+        .align-center {
+            align-items: center;
+        }
+        
+        .align-end {
+            align-items: flex-end;
+        }
+        
+        /* Flex Grow/Shrink */
+        .flex-grow .flex-item:nth-child(2) {
+            flex-grow: 2;
+            background-color: #8B4513;
+        }
+        
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        
+        .flex-wrap .flex-item {
+            width: 100px;
+        }
+        
+        /* Grid Styles */
+        .grid-container {
+            display: grid;
+            background-color: #f0f0f0;
+            padding: 10px;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .grid-item {
+            background-color: #228B22;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        /* Basic Grid */
+        .grid-basic {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 100px 100px;
+        }
+        
+        /* Grid Areas */
+        .grid-areas {
+            grid-template-areas:
+                "header header header"
+                "sidebar main main"
+                "footer footer footer";
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 80px 200px 80px;
+        }
+        
+        .header {
+            grid-area: header;
+            background-color: #4682B4;
+        }
+        
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #8B4513;
+        }
+        
+        .main {
+            grid-area: main;
+            background-color: #228B22;
+        }
+        
+        .footer {
+            grid-area: footer;
+            background-color: #2F4F4F;
+        }
+        
+        /* Grid Positioning */
+        .grid-positioning {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 80px);
+        }
+        
+        .grid-positioning .item1 {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+            background-color: #4682B4;
+        }
+        
+        .grid-positioning .item2 {
+            grid-column: 3 / 5;
+            grid-row: 1 / 2;
+            background-color: #8B4513;
+        }
+        
+        .grid-positioning .item3 {
+            grid-column: 3 / 4;
+            grid-row: 2 / 4;
+            background-color: #228B22;
+        }
+        
+        .grid-positioning .item4 {
+            grid-column: 1 / 3;
+            grid-row: 3 / 4;
+            background-color: #2F4F4F;
+        }
+        
+        .grid-positioning .item5 {
+            grid-column: 4 / 5;
+            grid-row: 2 / 4;
+            background-color: #8B008B;
+        }
+        
+        /* Auto-fit and minmax */
+        .grid-responsive {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-auto-rows: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Flexbox and Grid Layouts</h1>
+    
+    <!-- FLEXBOX SECTION -->
+    <div class="container">
+        <h2>CSS Flexbox</h2>
+        <div class="explanation">
+            Flexbox is a one-dimensional layout method designed for laying out items in rows or columns. 
+            It's ideal for component layouts and small-scale layouts.
+        </div>
+        
+        <h3>1. Basic Flexbox (Row)</h3>
+        <div class="demo-box">
+            <div class="flex-container flex-direction-row">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+                <div class="flex-item">Item 4</div>
+            </div>
+            <code>display: flex; flex-direction: row;</code>
+        </div>
+        
+        <h3>2. Flex Direction: Column</h3>
+        <div class="demo-box">
+            <div class="flex-container flex-direction-column">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            <code>display: flex; flex-direction: column;</code>
+        </div>
+        
+        <h3>3. Justify Content (Main Axis Alignment)</h3>
+        <div class="demo-box">
+            <p><strong>justify-content: flex-start</strong></p>
+            <div class="flex-container justify-start">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <p><strong>justify-content: center</strong></p>
+            <div class="flex-container justify-center">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <p><strong>justify-content: flex-end</strong></p>
+            <div class="flex-container justify-end">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <p><strong>justify-content: space-between</strong></p>
+            <div class="flex-container justify-between">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <p><strong>justify-content: space-around</strong></p>
+            <div class="flex-container justify-around">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+        </div>
+        
+        <h3>4. Align Items (Cross Axis Alignment)</h3>
+        <div class="demo-box">
+            <p><strong>align-items: flex-start</strong></p>
+            <div class="flex-container align-container align-start">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <p><strong>align-items: center</strong></p>
+            <div class="flex-container align-container align-center">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            
+            <p><strong>align-items: flex-end</strong></p>
+            <div class="flex-container align-container align-end">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+        </div>
+        
+        <h3>5. Flex Grow</h3>
+        <div class="demo-box">
+            <div class="flex-container flex-grow">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2 (flex-grow: 2)</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+            <code>Item 2 has flex-grow: 2; (takes twice as much available space)</code>
+        </div>
+        
+        <h3>6. Flex Wrap</h3>
+        <div class="demo-box">
+            <div class="flex-container flex-wrap">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+                <div class="flex-item">Item 4</div>
+                <div class="flex-item">Item 5</div>
+                <div class="flex-item">Item 6</div>
+                <div class="flex-item">Item 7</div>
+                <div class="flex-item">Item 8</div>
+            </div>
+            <code>display: flex; flex-wrap: wrap;</code>
+        </div>
+    </div>
+    
+    <!-- GRID SECTION -->
+    <div class="container">
+        <h2>CSS Grid</h2>
+        <div class="explanation">
+            Grid is a two-dimensional layout system designed for laying out items in rows and columns simultaneously.
+            It's ideal for page layouts and complex alignment scenarios.
+        </div>
+        
+        <h3>1. Basic Grid</h3>
+        <div class="demo-box">
+            <div class="grid-container grid-basic">
+                <div class="grid-item">Item 1</div>
+                <div class="grid-item">Item 2</div>
+                <div class="grid-item">Item 3</div>
+                <div class="grid-item">Item 4</div>
+                <div class="grid-item">Item 5</div>
+                <div class="grid-item">Item 6</div>
+            </div>
+            <code>display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 100px 100px;</code>
+        </div>
+        
+        <h3>2. Grid Template Areas</h3>
+        <div class="demo-box">
+            <div class="grid-container grid-areas">
+                <div class="grid-item header">Header</div>
+                <div class="grid-item sidebar">Sidebar</div>
+                <div class="grid-item main">Main Content</div>
+                <div class="grid-item footer">Footer</div>
+            </div>
+            <pre>
+grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+            </pre>
+        </div>
+        
+        <h3>3. Grid Item Positioning</h3>
+        <div class="demo-box">
+            <div class="grid-container grid-positioning">
+                <div class="grid-item item1">Item 1</div>
+                <div class="grid-item item2">Item 2</div>
+                <div class="grid-item item3">Item 3</div>
+                <div class="grid-item item4">Item 4</div>
+                <div class="grid-item item5">Item 5</div>
+            </div>
+            <pre>
+.item1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.item2 { grid-column: 3 / 5; grid-row: 1 / 2; }
+.item3 { grid-column: 3 / 4; grid-row: 2 / 4; }
+.item4 { grid-column: 1 / 3; grid-row: 3 / 4; }
+.item5 { grid-column: 4 / 5; grid-row: 2 / 4; }
+            </pre>
+        </div>
+        
+        <h3>4. Responsive Grid with auto-fit and minmax</h3>
+        <div class="demo-box">
+            <div class="grid-container grid-responsive">
+                <div class="grid-item">Item 1</div>
+                <div class="grid-item">Item 2</div>
+                <div class="grid-item">Item 3</div>
+                <div class="grid-item">Item 4</div>
+                <div class="grid-item">Item 5</div>
+                <div class="grid-item">Item 6</div>
+                <div class="grid-item">Item 7</div>
+                <div class="grid-item">Item 8</div>
+            </div>
+            <code>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));</code>
+            <p>Resize your browser window to see how the grid adapts!</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Flexbox vs. Grid: When to Use Each</h2>
+        <div class="explanation">
+            <p><strong>Use Flexbox when:</strong></p>
+            <ul>
+                <li>You need a layout in a single dimension (row OR column)</li>
+                <li>You're working with smaller component layouts</li>
+                <li>You need content-based sizing</li>
+                <li>You need to distribute space dynamically between items</li>
+            </ul>
+            
+            <p><strong>Use Grid when:</strong></p>
+            <ul>
+                <li>You need a layout in two dimensions (rows AND columns)</li>
+                <li>You're working with larger page layouts</li>
+                <li>You need precise control over placement</li>
+                <li>You need to overlap elements</li>
+                <li>You need to create complex track patterns</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

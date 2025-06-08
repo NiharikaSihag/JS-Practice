@@ -6,20 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hey</h1>
-    <h2>Hii</h2>
-    
     <script>
-        
         const worker = new Worker('worker.js');
-
-worker.postMessage('Hello, Worker!'); // Send data to the worker
-
-worker.onmessage = function (event) {
-  console.log('Received from worker:', event.data);
-};
-
-
+        worker.postMessage('Hey worker');
+        worker.onmessage = function(event){
+            console.log(event.data);
+        }
     </script>
+    
 </body>
 </html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Properties Demo</title>
+    <style>
+        body {
+            margin: 20px;
+            padding-bottom: 1500px; /* Added to enable scrolling for sticky demo */
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            position: relative;
+            border: 2px dashed #666;
+            padding: 10px;
+            margin-bottom: 30px;
+            height: 250px;
+            width: 80%;
+        }
+        
+        .box {
+            width: 150px;
+            height: 100px;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        /* Static Position Example */
+        .static-container .box {
+            position: static;
+            background-color: #8B4513;
+            top: 500px;
+        }
+        
+        /* Relative Position Example */
+        .relative-container .box-1 {
+            position: static;
+            background-color: #8B4513;
+        }
+        
+        .relative-container .box-2 {
+            position: relative;
+            top: 20px;
+            left: 50px;
+            background-color: #4682B4;
+        }
+        
+        /* Absolute Position Example */
+        .absolute-container .reference-box {
+            width: 300px;
+            height: 200px;
+            border: 2px solid #333;
+            position: relative; /* Creates positioning context */
+            margin-left: 20px;
+        }
+        
+        .absolute-container .box {
+            position: absolute;
+            background-color: #2F4F4F;
+            top: 30px;
+            left: 30px;
+        }
+        
+        /* Fixed Position Example */
+        .fixed-box {
+            position: fixed;
+            background-color: #008B8B;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        /* Sticky Position Example */
+        .sticky-container {
+            height: 400px;
+            overflow: auto;
+            border: 2px dashed #666;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .sticky-box {
+            position: sticky;
+            top: 0;
+            background-color: #228B22;
+            margin-bottom: 20px;
+        }
+        
+        .content-block {
+            height: 100px;
+            background-color: #f0f0f0;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        
+        h2 {
+            margin-top: 40px;
+        }
+        
+        .explanation {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Position Properties Explained</h1>
+    
+    <!-- Static Position -->
+    <h2>1. Position: Static (Default)</h2>
+    <div class="explanation">
+        Elements with <code>position: static</code> follow the normal document flow. 
+        The top, right, bottom, and left properties have no effect.
+    </div>
+    <div class="container static-container">
+        <div class="box">
+            Position: Static<br>
+            (Normal flow)
+        </div>
+    </div>
+    
+    <!-- Relative Position -->
+    <h2>2. Position: Relative</h2>
+    <div class="explanation">
+        Elements with <code>position: relative</code> are offset relative to their normal position,
+        but still occupy their original space in the document flow.
+    </div>
+    <div class="container relative-container">
+        <div class="box box-1">
+            Position: Static<br>
+            (Reference)
+        </div>
+        <div class="box box-2">
+            Position: Relative<br>
+            top: 20px, left: 50px
+        </div>
+    </div>
+    
+    <!-- Absolute Position -->
+    <h2>3. Position: Absolute</h2>
+    <div class="explanation">
+        Elements with <code>position: absolute</code> are removed from the normal document flow and
+        positioned relative to their nearest positioned ancestor (or the document body).
+    </div>
+    <div class="container absolute-container">
+        <div class="reference-box">
+            <p>Positioned Parent (position: relative)</p>
+            <div class="box">
+                Position: Absolute<br>
+                top: 30px, left: 30px
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fixed Position -->
+    <h2>4. Position: Fixed</h2>
+    <div class="explanation">
+        Elements with <code>position: fixed</code> are removed from the normal document flow and
+        positioned relative to the viewport. They stay in place even when scrolling.
+    </div>
+    <div class="box fixed-box">
+        Position: Fixed<br>
+        bottom: 20px, right: 20px<br>
+        (Stays in corner when scrolling)
+    </div>
+    
+    <!-- Sticky Position -->
+    <h2>5. Position: Sticky</h2>
+    <div class="explanation">
+        Elements with <code>position: sticky</code> behave like <code>relative</code> until they reach a
+        specified scroll threshold, then they behave like <code>fixed</code>.
+    </div>
+    <div class="sticky-container">
+        <div class="box sticky-box">
+            Position: Sticky<br>
+            top: 0<br>
+            (Scroll down to see effect)
+        </div>
+        <div class="content-block">Content Block 1</div>
+        <div class="content-block">Content Block 2</div>
+        <div class="content-block">Content Block 3</div>
+        <div class="content-block">Content Block 4</div>
+        <div class="content-block">Content Block 5</div>
+        <div class="content-block">Content Block 6</div>
+    </div>
+    
+    <h2>Summary of Position Properties</h2>
+    <ul>
+        <li><strong>Static:</strong> Default flow, no special positioning</li>
+        <li><strong>Relative:</strong> Positioned relative to its normal position, keeps its space in the flow</li>
+        <li><strong>Absolute:</strong> Removed from flow, positioned relative to nearest positioned ancestor</li>
+        <li><strong>Fixed:</strong> Removed from flow, positioned relative to viewport, stays in place when scrolling</li>
+        <li><strong>Sticky:</strong> Hybrid of relative and fixed, becomes fixed when scroll position is reached</li>
+    </ul>
+    
+    <div style="height: 100px;"></div> <!-- Extra space to allow scrolling -->
+</body>
+</html>

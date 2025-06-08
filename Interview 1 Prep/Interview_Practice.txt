@@ -1,0 +1,304 @@
+Review of: git, html, css, javascript, design principles, design patterns
+ 
+Review on Level: A1/A2
+ 
+Results:
+A1: 75%
+A2: 20%
+ 
+Strengths:
+ 
+git, git commands and gitlab
+html  and html basic skeleton
+what is doctype
+meta tag
+SEO and accessibility
+semantics tag div tag
+css specificity
+center a inner wrt outer div
+basic css coding
+Hello ---mouse over ---> Hello World
+what is JS
+what is event loop
+hoisting - theory correct but code snippet answer wrong
+closure
+arrow vs normal function
+different ways to create an object
+Problem statement- sum of all the numbers present in the string
+He solved it and the code was very optimized as well.
+ 
+ 
+ 
+Weaknesses:
+ 
+git switch vs git checkout
+merging vs rebasing - the answer needs improvement
+inline vs inline-block
+will it work- applying width and height to span tag?
+design principles- SOLID, KISS, DRY and YAGNI
+design patterns- able to explain theoretically but not able to write the code for Singleton design pattern
+shallow vs deep copy
+counter using setInterval - He understands that "clearInterval' is used to stop an interval, but he lacks the knowledge on how to implement it correctly.
+Problem statement- sort the given list of object
+he was able to solve it but his solution would only work if the key has string data if data is number it gives error.
+what would happen if promises has multiple resolve or reject statement- he is aware that promise will have one state only but don't know which state will take the precedence in the given code snippet-
+// new Promise(function (resolve, reject) {
+// 	console.log('promise');
+// 	reject('resolve 3');
+// 	resolve('resolve 1');
+// 	console.log('log-1');
+// 	resolve('resolve 2');
+// 	console.log('log-2');
+// 	console.log('promise-2');
+// })
+ 
+ 
+Coding snippet and coding problem answers
+ 
+// <!--<!DOCTYPE html>-->
+// <!--<html lan="en">-->
+// <!--    <head>-->
+// <!--        <meta>-->
+// <!--        <meta>-->
+// <!--        <style>-->
+// <!--            span {-->
+// <!--                width: 500px;-->
+// <!--                height: 500px;-->
+// <!--            }-->
+ 
+// <!--            div {-->
+// <!--                display: inline;--> not able to tell the difference between inline and inline-block
+// <!--                display: inline-block;-->
+// <!--            }-->
+// <!--            p:hover::after{-->
+// <!--                content: "world";-->
+// <!--            }-->
+// <!--            .outer{-->
+// <!--                position: relative;-->
+// <!--            }-->
+// <!--            .inner{-->
+// <!--                position: absolute;-->
+// <!--                top: 50%;-->
+// <!--                left: 50%;-->
+// <!--                transform: translate(-50%,-50%);-->
+// <!--            }-->
+// <!--        </style>-->
+// <!--    </head>-->
+// <!--    <body>-->
+// <!--        <script>-->
+//             document.getElementByTagname('p'); // he says it will retrieve it but in actual it won't
+// <!--        </script>-->
+ 
+// <!--        <p>hello</p>-->
+ 
+// <!--hello --mouse over the text-- hello world!-->
+// <!--        <span>Hi</span>-->
+ 
+ 
+// <!--        <div id="outer">-->
+// <!--            <div id="inner"></div>-->
+// <!--        </div>-->
+ 
+ 
+//         <!--<script></script>-->
+// <!--    </body>-->-->
+// <!--</html>-->
+ 
+ 
+ 
+correct answer
+// console.log('1'); // 1
+// setTimeout(() => console.log('2')); // 3
+// console.log('3'); // 2
+ 
+ 
+ 
+wrong answer
+// test(); // error
+ 
+// var test = 100;
+ 
+// function test() {
+//     console.log('test is function');
+// }
+ 
+// console.log(test); // 100
+ 
+ 
+it is not a shallow copy but he says it is, which is wrong
+// obj = {a: 100, b: {c:200}};
+// obj1 = obj; // shallow copy
+// obj1.a = 400;
+ 
+ 
+solved it correctly
+// product = (a) =>(b)=>b?product(a*b):a;
+ 
+// console.log(product(10)(2)()) // 20
+ 
+// console.log(product(10)(2)(2)()) // 40
+ 
+ 
+he needs to work on "this" keyword in arrow function and normal function 
+// const person = {
+// 	name: 'john doe',
+// 	addr1: {
+// 		city: 'city',
+// 		state: 'state',
+// 		getAddr: function () {
+// 			console.log(this);  // person ---> this is wrong but explanation needs improvement
+// 		},
+// 	},
+// 	addr2: {
+// 		city: 'another city',
+// 		state: 'another state',
+// 		getAddr: () => {
+// 			console.log(this);   // global--window ----> this is correct
+// 		},
+// 		getAddr2: function () {
+// 			return () => {
+// 				console.log(this);  // addr2 ----> this is correct but explanation need improvement
+// 			};
+// 		},
+// 	},
+// };
+ 
+// person.addr2.getAddr2()();
+// person.addr1.getAddr();
+// person.addr2.getAddr();
+ 
+ 
+he was going in correct direction but does not how to stop the setInterval
+// 1
+// 1 delay
+// 2
+// 1 delay
+// 3
+// 4
+// 5
+ 
+// let i = 0;
+// setInterval(()=>{
+//     console.log(i++);
+//     clearInterval(()=>);
+// },1000)
+ 
+ 
+needs to work on witting example code for singleton pattern
+// let log = new Object();
+ 
+// class Logger() {
+//     // logic
+// }
+ 
+ 
+// let log = new Logger();
+ 
+ 
+ 
+he is aware that promise will have one state only but don't know which state will take the precedence in the given code snippet-
+// new Promise(function (resolve, reject) {
+// 	console.log('promise');
+// 	reject('resolve 3');
+// 	resolve('resolve 1');
+// 	console.log('log-1');
+// 	resolve('resolve 2');
+// 	console.log('log-2');
+// 	console.log('promise-2');
+// })
+ 
+ 
+able to solve it correctly
+/*
+Addition of the numbers present in the string using in-built JS methods.
+str = 'AB_12_CD_23_EF_20';
+o/p- 55 
+Explanation: sum of 12 + 23 + 20 is 55;
+*/
+ 
+ 
+// ----------------------
+// function getSum(str) {
+// // write your code here...
+//   let value = str.split('_').reduce((acc,val)=>{
+//     return acc + (!isNaN(val)?Number(val):0);
+// },0);
+// console.log(value);
+// }
+ 
+// getSum('AB_12_CD_23_EF_20'); // 55
+ 
+// getSum('12_CD_23_EF_20'); // 55
+ 
+ 
+ 
+ 
+ 
+need to work on this as he took some time to solve it but his solution has limitation that it work only if the data is string for number type data it will give error.
+// const arrObj = [
+//     {
+//         name: 'john',
+//         id: 1,
+//         hobby: 'football',
+//     },
+//     {
+//         name: 'qwerty',
+//         id: 3,
+//         hobby: 'football',
+//     },
+//     {
+//         name: 'jully',
+//         id: 2,
+//         hobby: 'chess',
+//     },
+//     {
+//         name: 'jully',
+//         id: 2,
+//         hobby: 'chess',
+//     },
+//     {
+//         name: 'Mary',
+//         id: 4,
+//         hobby: 'chess',
+//     },
+//     {
+//         name: 'qwerty',
+//         id: 3,
+//         hobby: 'football',
+//     },
+//     {
+//         name: 'jully',
+//         id: 2,
+//         hobby: 'chess',
+//     },
+// ];
+ 
+// function sortObj(objList, key) {
+//  objList.sort((a,b)=>((typeof a[key]=='string'?a[key]:toString(a[key]))).localeCompare((typeof b[key]=='string'?b[key]:toString(b[key])));
+//  console.log(objList); 
+// }
+ 
+// sortObj(arrObj, 'id');
+ 
+ 
+ 
+Top required for next level:
+ 
+this keyword
+ 
+async and defer attribute in script tag OR html rendering
+promises working
+design principles
+design patterns
+ 
+ 
+ 
+Recommended reading / modules:
+ 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+https://web.dev/learn/javascript/
+ 
+ 
+ 
+Summary (Optional)
+The candidate demonstrates a strong theoretical understanding of most topics. However, when it comes to practical coding and working with code snippets, he tends to struggle and is unable to fully solve problems. Therefore, he should focus on gaining more hands-on experience with the core topics. Additionally, it's important that he is able to explain the code he writes. Without this, it may give the impression that he has merely memorized the answers, rather than truly understanding them.

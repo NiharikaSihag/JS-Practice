@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name ="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>API</title>
+
+    </head>
+    <body>
+        
+        <button onClick ="getJoke()">Click Me</button>
+        <p id="joke"></p>
+
+
+        <button onClick="getLocation()">Location</button>
+        <p id="locate"></p>
+
+        <script>
+
+            const worker = new Worker('worker.js');
+            function currySum(...args){
+                return(...nextArgs)=>{
+                    if(nextArgs.length === 0){
+                        worker.postMessage(args);
+                    }else{
+                        return currySum(...args, ...nextArgs);
+                    }
+                }
+
+            }
+            worker.onmessage = (event) => {
+                console.log(`Curried Sum from worker: ${event.data}`);
+            };
+            const sum = currySum(1)(2)(3)(4)();
+
+
+
+            function getLocation(){
+                const output = document.getElementById('locate');
+                if(!navigator.geolocation){
+                    output.innerText = 'Browser do not support';
+                    return;
+                }
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const {latitude, longitude} = position.coords;
+                        output.innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                    },
+                    (error) => {
+                        output.innerText = `❌ Error: ${error.message}`;
+                    }
+
+                )
+            }
+            async function getJoke(){
+                const output = document.getElementById('joke');
+
+            try{
+                const response = await fetch('https://api.chucknorris.io/jokes/random');
+                if(!response.ok){
+                    throw new Error(`Error occuered ${repsonse.status}`);
+                }
+                const data = await response.json();
+                output.innerText = data.value;
+
+            } catch(error){
+                console.error(`Error while fetching joke:`, error);
+                output.innerText = "Error while fetching";
+            }
+            }
+            
+        </script>
+    </body>
+</html>

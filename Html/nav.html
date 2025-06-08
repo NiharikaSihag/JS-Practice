@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav{
+            
+            background-color: gray;
+        }
+        li{
+            list-style:none;
+            padding: 10px
+        }
+        .nav-links{
+            display: flex;
+        }
+        .menu-toggle{
+            display: none;
+        }
+        .box{
+           min-width: 300px;
+            height: 150px;
+            border: 2px solid black;
+            margin-left: 10px;
+            text-align: center;
+        }
+        .cards-list{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        @media screen and (max-width: 992px){
+            .box{
+                min-width: 200px;
+            }
+        }
+        @media screen and (max-width: 768px){
+           .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle{
+                display: block;
+            }
+            .cards-list{
+                flex-direction: column;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links " id="nav-links">
+            <li>Home</li>
+        <li>Home</li>
+        <li>Home</li>
+        <li>Home</li>
+        </ul>
+    </nav>
+
+    <div class="cards-list">
+        <div class="box">
+            card1
+        </div>
+        <div class="box">
+            card 2
+        </div>
+        <div class="box">
+            card 3
+        </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+    
+</body>
+</html>
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form-ele">
+        <input id="name-txt" type="text" placeholder="name">
+        <input id="pass-txt" type="text" placeholder="password">
+        <button id="btn" type="submit " >Submit</button>
+    </form>
+    <script>
+        const formTag = document.getElementById('form-ele');
+        const nameTxt = document.getElementById('name-txt');
+        const passTxt = document.getElementById('pass-txt');
+        formTag.addEventListener('submit', function(event){
+            event.preventDefault();
+            localStorage.setItem('userName', nameTxt.value)
+            localStorage.setItem('userPass', passTxt.value)
+        })
+    </script>
+</body>
+</html>

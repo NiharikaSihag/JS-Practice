@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="JS/webWorker.js"></script> -->
+
+    <style>
+        .myDiv{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="myDiv">
+        Yeah
+    </div>
+    <script>
+        const worker = new Worker('JS/webWorker.js');
+        console.log('Hey');
+        worker.postMessage({a:5,b:3});
+        worker.onmessage = function(event){
+            console.log('result recieved', event.data);
+        };
+
+    </script>
+</body>
+</html>
+
+
+<!-- Questions -->
+ <!-- 
+1: What is Critical Rendering path
+2: difference between flex and grid
+3: What are semantic tags
+4: Tell me about geolocation API
+
+
+CSS:
+1: What are preprocessors
+2: Difference between sass and less
+3: What is responsive design and how to acheive that
+4: Tell me about BEM
+
+
+
+JS:
+1: What are web workers
+2: What are async code, give example of setTimeout, Promise, async await
+3: Promise.all(), Promise.allSettled(), Promise.race()
+4: What is lexical scope
+5: What is garbage collection and all the algorithms
+6: What is difference between debouncing and throttling (code)
+7: Define hositing and why is it even done? (output code)
+8: Event Bubbling, event delegation, event capturing
+9: How hoisting works for function declaration and function expressions
+10: what is closure? (code output questions)
+11: call, apply bind 
+12: Function composition, Higher order function (code)
+13: Prototype inheritance (code)
+
+
+design principles: KISS, DRY 
+
+patterns: Observer
+
+Unit Testing: 
+ -->
